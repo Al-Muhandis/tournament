@@ -2609,8 +2609,10 @@ object Frm: TFrm
       'AutoEncodeStrings=ON'
       'codepage=UTF-8'
     )
+    Connected = True
+    DesignConnection = True
     Port = 0
-    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournaments.sqlite'
+    Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament\tournaments.sqlite'
     Protocol = 'sqlite-3'
     Left = 1136
     Top = 510

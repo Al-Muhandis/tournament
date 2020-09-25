@@ -125,43 +125,56 @@ var
 
 implementation
 
-
-
 {$R *.lfm}
+
+const
+  _SQLEval1=
+  'CREATE TABLE IF NOT EXISTS teams (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING (128));';
+  _SQLEval2=
+  'CREATE TABLE IF NOT EXISTS tournaments (id INTEGER PRIMARY KEY AUTOINCREMENT, date  DATE, title STRING (256));';
+  _SQLEval3=
+  'CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY AUTOINCREMENT, tournament INTEGER, team INTEGER, '+
+  'q1 BOOLEAN DEFAULT (0), q2 BOOLEAN DEFAULT (0), q3 BOOLEAN DEFAULT (0), q4 BOOLEAN DEFAULT (0), q5 BOOLEAN DEFAULT (0), q6 BOOLEAN DEFAULT (0), q7 BOOLEAN DEFAULT (0), q8 BOOLEAN DEFAULT (0), q9 BOOLEAN DEFAULT (0), q10  BOOLEAN DEFAULT (0), q11  BOOLEAN DEFAULT (0), '+
+  'q12  BOOLEAN DEFAULT (0), q13  BOOLEAN DEFAULT (0), q14  BOOLEAN DEFAULT (0), q15  BOOLEAN DEFAULT (0), q16  BOOLEAN DEFAULT (0), q17  BOOLEAN DEFAULT (0), q18  BOOLEAN DEFAULT (0), q19  BOOLEAN DEFAULT (0), q20  BOOLEAN DEFAULT (0), q21  BOOLEAN DEFAULT (0), q22  BOOLEAN DEFAULT (0), '+
+  'q23  BOOLEAN DEFAULT (0), q24  BOOLEAN DEFAULT (0), q25  BOOLEAN DEFAULT (0), q26  BOOLEAN DEFAULT (0), q27  BOOLEAN DEFAULT (0), q28  BOOLEAN DEFAULT (0), q29  BOOLEAN DEFAULT (0), q30  BOOLEAN DEFAULT (0), q31  BOOLEAN DEFAULT (0), q32  BOOLEAN DEFAULT (0), q33  BOOLEAN DEFAULT (0), UNIQUE (tournament, team)ON CONFLICT IGNORE);';
+
+
+
+
 
 { TFrm }
 {
 function TFrm.GetORM: TTournamentORM;
 begin
   if not Assigned(FORM) then
-    FORM:=TTournamentORM.Create('tournaments.sqlite', 'sqlite3');
+  FORM:=TTournamentORM.Create('tournaments.sqlite', 'sqlite3');
   Result:=FORM;
 end;
 }
 procedure TFrm.SwitchFullScreen(aMonitor: SmallInt);
 begin
   if Visible=False then
-    Show;
+  Show;
   if BorderStyle <> bsNone then begin
-    // To full screen
-    FOriginalWindowState := WindowState;
-    FOriginalBounds := BoundsRect;
-    TlBrScoreTable.Visible:=False;
-    TlBrTeams.Visible:=False;
-    BorderStyle := bsNone;
-    if (Screen.MonitorCount=1) or (aMonitor=-1) then
-      BoundsRect := Screen.MonitorFromWindow(Handle, mdNearest).BoundsRect
-    else
-      BoundsRect:=Screen.Monitors[aMonitor].BoundsRect;
+  // To full screen
+  FOriginalWindowState := WindowState;
+  FOriginalBounds := BoundsRect;
+  TlBrScoreTable.Visible:=False;
+  TlBrTeams.Visible:=False;
+  BorderStyle := bsNone;
+  if (Screen.MonitorCount=1) or (aMonitor=-1) then
+  BoundsRect := Screen.MonitorFromWindow(Handle, mdNearest).BoundsRect
+  else
+  BoundsRect:=Screen.Monitors[aMonitor].BoundsRect;
   end else begin
-    // From full screen
-    BorderStyle := bsSizeable;
-    if FOriginalWindowState = wsMaximized then
-      WindowState := wsMaximized
-    else
-      BoundsRect := FOriginalBounds;
-    TlBrScoreTable.Visible:=True;
-    TlBrTeams.Visible:=True;
+  // From full screen
+  BorderStyle := bsSizeable;
+  if FOriginalWindowState = wsMaximized then
+  WindowState := wsMaximized
+  else
+  BoundsRect := FOriginalBounds;
+  TlBrScoreTable.Visible:=True;
+  TlBrTeams.Visible:=True;
   end;
 end;
 
@@ -180,7 +193,10 @@ procedure TFrm.FormCreate(Sender: TObject);
 begin
   ZCnctn.Disconnect;
   ZCnctn.Database:=AppDir+'tournaments.sqlite';
-  ZCnctn.Connect;
+  ZCnctn.Connect; 
+  ZCnctn.ExecuteDirect(_SQLEval1);
+  ZCnctn.ExecuteDirect(_SQLEval2);
+  ZCnctn.ExecuteDirect(_SQLEval3);
   //ZQryScores.Open;
   ZQryTournaments.Open;
   ZQryTeams.Open;
@@ -196,7 +212,7 @@ end;
 procedure TFrm.ZQryScoreTableAfterInsert(DataSet: TDataSet);
 begin
   ZQryScoreTabletournament.AsInteger:=ZQryTournamentsid.AsInteger;
-  ZQryScoreTableq1.AsBoolean:=False;    
+  ZQryScoreTableq1.AsBoolean:=False;
   ZQryScoreTableq2.AsBoolean:=False;
   ZQryScoreTableq3.AsBoolean:=False;
   ZQryScoreTableq4.AsBoolean:=False;
@@ -234,16 +250,16 @@ end;
 procedure TFrm.ZQryScoreTableCalcFields(DataSet: TDataSet);
 begin
   ZQryScoreTableRound1.AsInteger:=ZQryScoreTableq1.AsInteger+ZQryScoreTableq2.AsInteger+ZQryScoreTableq3.AsInteger+
-    ZQryScoreTableq4.AsInteger+ZQryScoreTableq5.AsInteger+ZQryScoreTableq6.AsInteger+ZQryScoreTableq7.AsInteger+
-    ZQryScoreTableq8.AsInteger+ZQryScoreTableq9.AsInteger+ZQryScoreTableq10.AsInteger+ZQryScoreTableq11.AsInteger;
+  ZQryScoreTableq4.AsInteger+ZQryScoreTableq5.AsInteger+ZQryScoreTableq6.AsInteger+ZQryScoreTableq7.AsInteger+
+  ZQryScoreTableq8.AsInteger+ZQryScoreTableq9.AsInteger+ZQryScoreTableq10.AsInteger+ZQryScoreTableq11.AsInteger;
   ZQryScoreTableRound1Club.AsInteger:=11-ZQryScoreTableRound1.AsInteger;
   ZQryScoreTableRound2.AsInteger:=ZQryScoreTableq12.AsInteger+ZQryScoreTableq13.AsInteger+ZQryScoreTableq14.AsInteger+
-    ZQryScoreTableq15.AsInteger+ZQryScoreTableq16.AsInteger+ZQryScoreTableq17.AsInteger+ZQryScoreTableq18.AsInteger+
-    ZQryScoreTableq19.AsInteger+ZQryScoreTableq20.AsInteger+ZQryScoreTableq21.AsInteger+ZQryScoreTableq22.AsInteger;
+  ZQryScoreTableq15.AsInteger+ZQryScoreTableq16.AsInteger+ZQryScoreTableq17.AsInteger+ZQryScoreTableq18.AsInteger+
+  ZQryScoreTableq19.AsInteger+ZQryScoreTableq20.AsInteger+ZQryScoreTableq21.AsInteger+ZQryScoreTableq22.AsInteger;
   ZQryScoreTableRound2Club.AsInteger:=11-ZQryScoreTableRound2.AsInteger;
   ZQryScoreTableRound3.AsInteger:=ZQryScoreTableq23.AsInteger+ZQryScoreTableq24.AsInteger+ZQryScoreTableq25.AsInteger+
-    ZQryScoreTableq26.AsInteger+ZQryScoreTableq27.AsInteger+ZQryScoreTableq28.AsInteger+ZQryScoreTableq29.AsInteger+
-    ZQryScoreTableq30.AsInteger+ZQryScoreTableq31.AsInteger+ZQryScoreTableq32.AsInteger+ZQryScoreTableq33.AsInteger;
+  ZQryScoreTableq26.AsInteger+ZQryScoreTableq27.AsInteger+ZQryScoreTableq28.AsInteger+ZQryScoreTableq29.AsInteger+
+  ZQryScoreTableq30.AsInteger+ZQryScoreTableq31.AsInteger+ZQryScoreTableq32.AsInteger+ZQryScoreTableq33.AsInteger;
   ZQryScoreTableRound3Club.AsInteger:=11-ZQryScoreTableRound3.AsInteger;
   ZQryScoreTableResult.AsInteger:=ZQryScoreTableRound1.AsInteger+ZQryScoreTableRound2.AsInteger+ZQryScoreTableRound3.AsInteger;
 end;
