@@ -1,7 +1,7 @@
 object Frm: TFrm
-  Left = 88
+  Left = 109
   Height = 780
-  Top = 106
+  Top = 165
   Width = 1661
   Caption = 'Интеллектуальные игры. Турнир'
   ClientHeight = 780
@@ -5550,5 +5550,15 @@ object Frm: TFrm
       OnExecute = ActnSwitchFullScreenExecute
       ShortCut = 122
     end
+  end
+  object RxDBGridExportSpreadSheet1: TRxDBGridExportSpreadSheet
+    RxDBGrid = RxDBGrdScoreTable
+    Caption = 'Export to speadsheet'
+    ShowSetupForm = True
+    PageName = 'Турнирная сетка'
+    Options = [ressExportTitle, ressExportColors, ressHideZeroValues, ressColSpanning]
+    OpenAfterExport = True
+    Left = 544
+    Top = 360
   end
 end

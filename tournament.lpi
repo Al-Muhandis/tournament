@@ -14,11 +14,15 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
+    <i18n>
+      <OutDir Value="languages"/>
+    </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="14"/>
+      <BuildNr Value="34"/>
+      <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
       <Item Name="Default" Default="True"/>
@@ -27,7 +31,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="release\tournament"/>
+            <Filename Value="tournament"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -67,7 +71,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="tournament"/>
+            <Filename Value="release\tournament"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>

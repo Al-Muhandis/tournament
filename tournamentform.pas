@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, RxDBGrid, rxlookup, RxSortZeos,
-  ZConnection, ZDataset, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList
+  ZConnection, ZDataset, RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList
   ;
 
 type
@@ -32,6 +32,7 @@ type
     RxDBGrdScoreTable3: TRxDBGrid;
     RxDBGrdScoreTable4: TRxDBGrid;
     DBGrdTournaments: TRxDBGrid;
+    RxDBGridExportSpreadSheet1: TRxDBGridExportSpreadSheet;
     RxDBGridTeams: TRxDBGrid;
     RxLookupEdit1: TRxLookupEdit;
     RxSrtZs: TRxSortZeos;
