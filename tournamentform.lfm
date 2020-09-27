@@ -5538,8 +5538,15 @@ object Frm: TFrm
   object PppMnTray: TPopupMenu
     Left = 408
     Top = 464
-    object MenuItem1: TMenuItem
+    object miFullScreen: TMenuItem
       Action = ActnSwitchFullScreen
+      Caption = 'Полный экран'
+    end
+    object miScreen1: TMenuItem
+      Action = ActnScreen1
+    end
+    object miScreen2: TMenuItem
+      Action = ActnScreen2
     end
   end
   object ActnLst: TActionList
@@ -5549,6 +5556,13 @@ object Frm: TFrm
       Caption = 'Переключить экран'
       OnExecute = ActnSwitchFullScreenExecute
       ShortCut = 122
+    end
+    object ActnScreen1: TAction
+      Caption = 'На 1-ый экран'
+      OnExecute = ActnScreen1Execute
+    end
+    object ActnScreen2: TAction
+      Caption = 'На 2-ой экран'
     end
   end
   object RxDBGridExportSpreadSheet1: TRxDBGridExportSpreadSheet

@@ -14,6 +14,8 @@ type
   { TFrm }
 
   TFrm = class(TForm)
+    ActnScreen2: TAction;
+    ActnScreen1: TAction;
     ActnSwitchFullScreen: TAction;
     ActnLst: TActionList;
     DBNvgtrTournaments: TDBNavigator;
@@ -22,7 +24,9 @@ type
     DBNavigator2: TDBNavigator;
     DtSrcTeams: TDataSource;
     DtSrcScoreTable: TDataSource;
-    MenuItem1: TMenuItem;
+    miFullScreen: TMenuItem;
+    miScreen1: TMenuItem;
+    miScreen2: TMenuItem;
     PgCntrlRounds: TPageControl;
     PgCntrl: TPageControl;
     PppMnTray: TPopupMenu;
@@ -102,6 +106,7 @@ type
     ZQryTournamentsdate: TDateField;
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;
+    procedure ActnScreen1Execute(Sender: TObject);
     procedure ActnSwitchFullScreenExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -155,27 +160,28 @@ end;
 procedure TFrm.SwitchFullScreen(aMonitor: SmallInt);
 begin
   if Visible=False then
-  Show;
+    Show;
   if BorderStyle <> bsNone then begin
-  // To full screen
-  FOriginalWindowState := WindowState;
-  FOriginalBounds := BoundsRect;
-  TlBrScoreTable.Visible:=False;
-  TlBrTeams.Visible:=False;
-  BorderStyle := bsNone;
-  if (Screen.MonitorCount=1) or (aMonitor=-1) then
-  BoundsRect := Screen.MonitorFromWindow(Handle, mdNearest).BoundsRect
-  else
-  BoundsRect:=Screen.Monitors[aMonitor].BoundsRect;
-  end else begin
-  // From full screen
-  BorderStyle := bsSizeable;
-  if FOriginalWindowState = wsMaximized then
-  WindowState := wsMaximized
-  else
-  BoundsRect := FOriginalBounds;
-  TlBrScoreTable.Visible:=True;
-  TlBrTeams.Visible:=True;
+    // To full screen
+    FOriginalWindowState := WindowState;
+    FOriginalBounds := BoundsRect;
+    TlBrScoreTable.Visible:=False;
+    TlBrTeams.Visible:=False;
+    BorderStyle := bsNone;
+    if (Screen.MonitorCount=1) or (aMonitor=-1) then
+      BoundsRect := Screen.MonitorFromWindow(Handle, mdNearest).BoundsRect
+    else
+      BoundsRect:=Screen.Monitors[aMonitor].BoundsRect;
+  end
+  else begin
+    // From full screen
+    BorderStyle := bsSizeable;
+    if FOriginalWindowState = wsMaximized then
+      WindowState := wsMaximized
+    else
+      BoundsRect := FOriginalBounds;
+    TlBrScoreTable.Visible:=True;
+    TlBrTeams.Visible:=True;
   end;
 end;
 
@@ -198,7 +204,6 @@ begin
   ZCnctn.ExecuteDirect(_SQLEval1);
   ZCnctn.ExecuteDirect(_SQLEval2);
   ZCnctn.ExecuteDirect(_SQLEval3);
-  //ZQryScores.Open;
   ZQryTournaments.Open;
   ZQryTeams.Open;
   ZQryScoreTable.SQL.Text:='select * from scores where tournament = '+ZQryTournamentsid.AsInteger.ToString;
@@ -208,6 +213,11 @@ end;
 procedure TFrm.ActnSwitchFullScreenExecute(Sender: TObject);
 begin
   SwitchFullScreen();
+end;
+
+procedure TFrm.ActnScreen1Execute(Sender: TObject);
+begin
+  SwitchFullScreen(0);
 end;
 
 procedure TFrm.ZQryScoreTableAfterInsert(DataSet: TDataSet);
