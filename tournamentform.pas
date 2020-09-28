@@ -221,41 +221,13 @@ begin
 end;
 
 procedure TFrm.ZQryScoreTableAfterInsert(DataSet: TDataSet);
+var
+  aField: TField;
 begin
   ZQryScoreTabletournament.AsInteger:=ZQryTournamentsid.AsInteger;
-  ZQryScoreTableq1.AsBoolean:=False;
-  ZQryScoreTableq2.AsBoolean:=False;
-  ZQryScoreTableq3.AsBoolean:=False;
-  ZQryScoreTableq4.AsBoolean:=False;
-  ZQryScoreTableq5.AsBoolean:=False;
-  ZQryScoreTableq6.AsBoolean:=False;
-  ZQryScoreTableq7.AsBoolean:=False;
-  ZQryScoreTableq8.AsBoolean:=False;
-  ZQryScoreTableq9.AsBoolean:=False;
-  ZQryScoreTableq10.AsBoolean:=False;
-  ZQryScoreTableq11.AsBoolean:=False;
-  ZQryScoreTableq12.AsBoolean:=False;
-  ZQryScoreTableq13.AsBoolean:=False;
-  ZQryScoreTableq14.AsBoolean:=False;
-  ZQryScoreTableq15.AsBoolean:=False;
-  ZQryScoreTableq16.AsBoolean:=False;
-  ZQryScoreTableq17.AsBoolean:=False;
-  ZQryScoreTableq18.AsBoolean:=False;
-  ZQryScoreTableq19.AsBoolean:=False;
-  ZQryScoreTableq20.AsBoolean:=False;
-  ZQryScoreTableq21.AsBoolean:=False;
-  ZQryScoreTableq22.AsBoolean:=False;
-  ZQryScoreTableq23.AsBoolean:=False;
-  ZQryScoreTableq24.AsBoolean:=False;
-  ZQryScoreTableq25.AsBoolean:=False;
-  ZQryScoreTableq26.AsBoolean:=False;
-  ZQryScoreTableq27.AsBoolean:=False;
-  ZQryScoreTableq28.AsBoolean:=False;
-  ZQryScoreTableq29.AsBoolean:=False;
-  ZQryScoreTableq30.AsBoolean:=False;
-  ZQryScoreTableq31.AsBoolean:=False; 
-  ZQryScoreTableq32.AsBoolean:=False;
-  ZQryScoreTableq33.AsBoolean:=False;
+  for aField in ZQryScoreTable.Fields do
+    if aField is TBooleanField then
+      TBooleanField(aField).AsBoolean:=False;
 end;
 
 procedure TFrm.ZQryScoreTableCalcFields(DataSet: TDataSet);
