@@ -22,7 +22,7 @@ object FrameTournament: TFrameTournament
     TabIndex = 0
     TabOrder = 0
     object TbShtScoreTableAllRounds: TTabSheet
-      Caption = 'Счет / Раунды'
+      Caption = '🧮 Счет / Раунды'
       ClientHeight = 701
       ClientWidth = 1304
       object TlBrScoreTable: TToolBar
@@ -2302,7 +2302,7 @@ object FrameTournament: TFrameTournament
       end
     end
     object TbShtTeams: TTabSheet
-      Caption = 'Команды'
+      Caption = '🔖 Команды'
       ClientHeight = 701
       ClientWidth = 1304
       object RxDBGridTeams: TRxDBGrid
@@ -2441,7 +2441,7 @@ object FrameTournament: TFrameTournament
       end
     end
     object TbShtTournament: TTabSheet
-      Caption = 'Турнир'
+      Caption = '🏅 Турнир'
       ClientHeight = 701
       ClientWidth = 1304
       object DBGrdTournaments: TRxDBGrid
@@ -2607,8 +2607,8 @@ object FrameTournament: TFrameTournament
     Port = 0
     Database = 'C:\Users\mail\Documents\Projects\Lazarus\Что Где Когда\tournament\tournaments.sqlite'
     Protocol = 'sqlite-3'
-    Left = 1136
-    Top = 510
+    Left = 464
+    Top = 424
   end
   object ZQryTeams: TZQuery
     Connection = ZCnctn
@@ -2617,8 +2617,8 @@ object FrameTournament: TFrameTournament
     )
     Params = <>
     Options = [doCalcDefaults, doSmartOpen]
-    Left = 1216
-    Top = 462
+    Left = 544
+    Top = 376
     object ZQryTeamsid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -2651,8 +2651,8 @@ object FrameTournament: TFrameTournament
     )
     Params = <>
     Options = []
-    Left = 1216
-    Top = 534
+    Left = 544
+    Top = 448
     object ZQryScoreTableid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -3106,17 +3106,17 @@ object FrameTournament: TFrameTournament
   end
   object DtSrcScoreTable: TDataSource
     DataSet = ZQryScoreTable
-    Left = 1360
-    Top = 534
+    Left = 656
+    Top = 448
   end
   object DtSrcTeams: TDataSource
     DataSet = ZQryTeams
-    Left = 1360
-    Top = 466
+    Left = 656
+    Top = 376
   end
   object RxSrtZs: TRxSortZeos
-    Left = 1472
-    Top = 534
+    Left = 392
+    Top = 424
   end
   object ZQryTournaments: TZQuery
     Connection = ZCnctn
@@ -3125,8 +3125,8 @@ object FrameTournament: TFrameTournament
       'select * from tournaments'
     )
     Params = <>
-    Left = 1218
-    Top = 606
+    Left = 546
+    Top = 520
     object ZQryTournamentsid: TLargeintField
       FieldKind = fkData
       FieldName = 'id'
@@ -3161,8 +3161,8 @@ object FrameTournament: TFrameTournament
   end
   object DtSrcTournaments: TDataSource
     DataSet = ZQryTournaments
-    Left = 1360
-    Top = 606
+    Left = 656
+    Top = 520
   end
   object RxDBGridExportSpreadSheet1: TRxDBGridExportSpreadSheet
     RxDBGrid = RxDBGrdScoreTable
