@@ -605,17 +605,17 @@ msgstr ""
 
 #: tframetournament.tbshtscoretableallrounds.caption
 msgctxt "tframetournament.tbshtscoretableallrounds.caption"
-msgid "Счет / Раунды"
+msgid "🧮 Счет / Раунды"
 msgstr ""
 
 #: tframetournament.tbshtteams.caption
 msgctxt "tframetournament.tbshtteams.caption"
-msgid "Команды"
+msgid "🔖 Команды"
 msgstr ""
 
 #: tframetournament.tbshttournament.caption
 msgctxt "tframetournament.tbshttournament.caption"
-msgid "Турнир"
+msgid "🏅 Турнир"
 msgstr ""
 
 #: tframetournament.tlbrscoretable.caption
@@ -1182,6 +1182,21 @@ msgstr ""
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption
 msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtround3.rxdbgrdscoretable3.columns[9].title.caption"
 msgid "Раунд 3|27"
+msgstr ""
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption"
+msgid "id"
+msgstr ""
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption"
+msgid "date"
+msgstr ""
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption"
+msgid "title"
 msgstr ""
 
 #: tfrm.menuitem1.caption
