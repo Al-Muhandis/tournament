@@ -11,11 +11,31 @@ object Frm: TFrm
   OnCreate = FormCreate
   LCLVersion = '2.2.6.0'
   inline FrmTrnmnt: TFrameTournament
-    Height = 780
-    Width = 1322
-    Align = alClient
-    ClientHeight = 780
-    ClientWidth = 1322
+    inherited PgCntrl: TPageControl
+      ActivePage = FrmTrnmnt.TbShtScoreTableAllRounds
+      TabIndex = 0
+      inherited TbShtScoreTableAllRounds: TTabSheet
+        inherited TlBrScoreTable: TToolBar
+          inherited DBNavigator2: TDBNavigator
+            Hints.Strings = (            )
+          end
+        end
+      end
+      inherited TbShtTeams: TTabSheet
+        inherited TlBrTeams: TToolBar
+          inherited DBNavigator1: TDBNavigator
+            Hints.Strings = (            )
+          end
+        end
+      end
+      inherited TbShtTournament: TTabSheet
+        inherited TlBrTournaments: TToolBar
+          inherited DBNvgtrTournaments: TDBNavigator
+            Hints.Strings = (            )
+          end
+        end
+      end
+    end
   end
   object TryIcn: TTrayIcon
     PopUpMenu = PppMnTray

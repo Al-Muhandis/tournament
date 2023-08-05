@@ -24,6 +24,7 @@ type
     miScreen1: TMenuItem;
     miScreen2: TMenuItem;
     PppMnTray: TPopupMenu;
+    TbShtOptions: TTabSheet;
     TryIcn: TTrayIcon;
     procedure ActnScreen1Execute({%H-}Sender: TObject);
     procedure ActnSwitchFullScreenExecute({%H-}Sender: TObject);
@@ -76,7 +77,8 @@ end;
 
 procedure TFrm.FormCreate(Sender: TObject);
 begin
-  FrmTrnmnt.InitDB;
+  FrmTrnmnt.InitDB;   
+  FrmTrnmnt.Q11InRound:=True;
 end;
 
 procedure TFrm.ActnSwitchFullScreenExecute(Sender: TObject);
