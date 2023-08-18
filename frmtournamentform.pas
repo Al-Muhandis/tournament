@@ -128,7 +128,9 @@ type
     procedure InitDB;
     procedure ApplyDB;                                               
     function FieldFromQuestion(aQuestionNum: Integer): TBooleanField;
-    function QuestionsInRound: Integer;
+    function BetFieldFromQuestion(aQuestionNum: Integer): TBooleanField;
+    function QuestionsInRound: Integer;                              
+    function RoundFromQuestion(aQuestion: Integer): Integer;
     property ToolBarVisible: Boolean write SetToolBarVisible;
     property Q11InRound: Boolean read GetQ11InRound write SetQ11InRound;
     property QuestionWithBet: Integer read GetQuestionWithBet write SetQuestionWithBet;
@@ -309,12 +311,28 @@ begin
   Result:=ZQryScoreTable.FieldByName('q'+aQuestionNum.ToString) as TBooleanField;
 end;
 
+function TFrameTournament.BetFieldFromQuestion(aQuestionNum: Integer): TBooleanField;
+begin
+  case RoundFromQuestion(aQuestionNum) of
+    1: Result:=ZQryScoreTablebet1round;
+    2: Result:=ZQryScoreTablebet2round;
+    3: Result:=ZQryScoreTablebet3round;
+  else
+    Result:=nil;
+  end;
+end;
+
 function TFrameTournament.QuestionsInRound: Integer;
 begin
   if Q11InRound then
     Exit(11)
   else
     Exit(10);
+end;
+
+function TFrameTournament.RoundFromQuestion(aQuestion: Integer): Integer;
+begin
+  Result:=(aQuestion div QuestionsInRound) + 1
 end;
 
 procedure TFrameTournament.InitDB;
