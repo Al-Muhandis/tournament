@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, RxDBGrid,
-  RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList, frmtournamentform
-  ;
+  RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList, IniPropStorage, frmtournamentform
+  , PropertyStorage;
 
 type
 
@@ -19,6 +19,7 @@ type
     ActnSwitchFullScreen: TAction;
     ActnLst: TActionList;
     FrmTrnmnt: TFrameTournament;
+    IniPrpStrg: TIniPropStorage;
     MenuItem1: TMenuItem;
     miFullScreen: TMenuItem;
     miScreen1: TMenuItem;
@@ -30,6 +31,8 @@ type
     procedure ActnSwitchFullScreenExecute({%H-}Sender: TObject);
     procedure FormClose({%H-}Sender: TObject; var {%H-}CloseAction: TCloseAction);
     procedure FormCreate({%H-}Sender: TObject);
+    procedure IniPrpStrgRestoringProperties(Sender: TObject);
+    procedure IniPrpStrgSavingProperties(Sender: TObject);
   private
     FOriginalBounds: TRect;
     FOriginalWindowState: TWindowState;
@@ -79,6 +82,18 @@ procedure TFrm.FormCreate(Sender: TObject);
 begin
   FrmTrnmnt.InitDB;   
   FrmTrnmnt.Q11InRound:=True;
+end;
+
+procedure TFrm.IniPrpStrgRestoringProperties(Sender: TObject);
+begin
+  FrmTrnmnt.Q11InRound:=     TIniPropStorage(Sender).ReadBoolean('Q11InRound', True);
+  FrmTrnmnt.QuestionWithBet:=TIniPropStorage(Sender).ReadInteger('QWithBet', 0);
+end;
+
+procedure TFrm.IniPrpStrgSavingProperties(Sender: TObject);
+begin
+  TIniPropStorage(Sender).WriteBoolean('Q11InRound', FrmTrnmnt.Q11InRound);
+  TIniPropStorage(Sender).WriteInteger('QWithBet',   FrmTrnmnt.QuestionWithBet);
 end;
 
 procedure TFrm.ActnSwitchFullScreenExecute(Sender: TObject);
