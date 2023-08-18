@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, ComCtrls, Menus, RxDBGridExportSpreadSheet, RxSortZeos, ZDataset, ZConnection,
-  RxDBGrid, DBCtrls, ExtCtrls, rxlookup
+  RxDBGrid, DBCtrls, ExtCtrls, StdCtrls, Spin, rxlookup
   ;
 
 type
@@ -23,6 +23,10 @@ type
     DtSrcScoreTable: TDataSource;
     DtSrcTeams: TDataSource;
     DtSrcTournaments: TDataSource;
+    GrpBxRules: TGroupBox;
+    GrpBxBet: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
     miFullScreen: TMenuItem;
     miScreen1: TMenuItem;
     miScreen2: TMenuItem;
@@ -38,6 +42,7 @@ type
     RxDBGridTeams: TRxDBGrid;
     RxLookupEdit1: TRxLookupEdit;
     RxSrtZs: TRxSortZeos;
+    SpnEdtBet: TSpinEdit;
     StringField1: TStringField;
     TbShtOptions: TTabSheet;
     TbShtAllRounds: TTabSheet;
@@ -54,6 +59,9 @@ type
     ToolButton1: TToolButton;
     ZCnctn: TZConnection;
     ZQryScoreTable: TZQuery;
+    ZQryScoreTablebet1round: TBooleanField;
+    ZQryScoreTablebet2round: TBooleanField;
+    ZQryScoreTablebet3round: TBooleanField;
     ZQryScoreTableid: TLargeintField;
     ZQryScoreTableq1: TBooleanField;
     ZQryScoreTableq10: TBooleanField;
@@ -105,19 +113,25 @@ type
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;
     procedure RdGrpQuestionCountClick(Sender: TObject);
+    procedure SpnEdtBetChange(Sender: TObject);
     procedure ZQryScoreTableAfterInsert({%H-}DataSet: TDataSet);
     procedure ZQryScoreTableCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryTournamentsAfterScroll({%H-}DataSet: TDataSet);
   private
     function GetQ11InRound: Boolean;
+    function GetQuestionWithBet: Integer;
     procedure SetQ11InRound(AValue: Boolean);
+    procedure SetQuestionWithBet(AValue: Integer);
     procedure SetToolBarVisible(AValue: Boolean);
     procedure UpdateColumns;
   public
     procedure InitDB;
-    procedure ApplyDB;
+    procedure ApplyDB;                                               
+    function FieldFromQuestion(aQuestionNum: Integer): TBooleanField;
+    function QuestionsInRound: Integer;
     property ToolBarVisible: Boolean write SetToolBarVisible;
     property Q11InRound: Boolean read GetQ11InRound write SetQ11InRound;
+    property QuestionWithBet: Integer read GetQuestionWithBet write SetQuestionWithBet;
   end;
 
 implementation
@@ -136,7 +150,11 @@ const
   'CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY AUTOINCREMENT, tournament INTEGER, team INTEGER, '+
   'q1 BOOLEAN DEFAULT (0), q2 BOOLEAN DEFAULT (0), q3 BOOLEAN DEFAULT (0), q4 BOOLEAN DEFAULT (0), q5 BOOLEAN DEFAULT (0), q6 BOOLEAN DEFAULT (0), q7 BOOLEAN DEFAULT (0), q8 BOOLEAN DEFAULT (0), q9 BOOLEAN DEFAULT (0), q10  BOOLEAN DEFAULT (0), q11  BOOLEAN DEFAULT (0), '+
   'q12  BOOLEAN DEFAULT (0), q13  BOOLEAN DEFAULT (0), q14  BOOLEAN DEFAULT (0), q15  BOOLEAN DEFAULT (0), q16  BOOLEAN DEFAULT (0), q17  BOOLEAN DEFAULT (0), q18  BOOLEAN DEFAULT (0), q19  BOOLEAN DEFAULT (0), q20  BOOLEAN DEFAULT (0), q21  BOOLEAN DEFAULT (0), q22  BOOLEAN DEFAULT (0), '+
-  'q23  BOOLEAN DEFAULT (0), q24  BOOLEAN DEFAULT (0), q25  BOOLEAN DEFAULT (0), q26  BOOLEAN DEFAULT (0), q27  BOOLEAN DEFAULT (0), q28  BOOLEAN DEFAULT (0), q29  BOOLEAN DEFAULT (0), q30  BOOLEAN DEFAULT (0), q31  BOOLEAN DEFAULT (0), q32  BOOLEAN DEFAULT (0), q33  BOOLEAN DEFAULT (0), UNIQUE (tournament, team)ON CONFLICT IGNORE);';
+  'q23  BOOLEAN DEFAULT (0), q24  BOOLEAN DEFAULT (0), q25  BOOLEAN DEFAULT (0), q26  BOOLEAN DEFAULT (0), q27  BOOLEAN DEFAULT (0), q28  BOOLEAN DEFAULT (0), q29  BOOLEAN DEFAULT (0), q30  BOOLEAN DEFAULT (0), q31  BOOLEAN DEFAULT (0), q32  BOOLEAN DEFAULT (0), q33  BOOLEAN DEFAULT (0), '+
+  'bet1round  BOOLEAN DEFAULT (0), '+
+  'bet2round  BOOLEAN DEFAULT (0), '+
+  'bet3round  BOOLEAN DEFAULT (0), '+
+  'UNIQUE (tournament, team) ON CONFLICT IGNORE);';
 
 
 resourcestring
@@ -160,27 +178,53 @@ begin
   Q11InRound:=TRadioGroup(Sender).ItemIndex=1;
 end;
 
+procedure TFrameTournament.SpnEdtBetChange(Sender: TObject);
+var
+  aCanBets: Boolean;
+begin
+  ZQryScoreTable.Refresh;
+  aCanBets:=TSpinEdit(Sender).Value>0;
+  ZQryScoreTablebet1round.Visible:=aCanBets;
+  ZQryScoreTablebet2round.Visible:=aCanBets;
+  ZQryScoreTablebet3round.Visible:=aCanBets;
+end;
+
 procedure TFrameTournament.ZQryScoreTableCalcFields(DataSet: TDataSet);
 var
-  aQInRound: Integer;
+  aQInRound, aScore: Integer;
+
+  { if bet is set then doubled a point if valid answer or decrement if not valid answer }
+  procedure CorrectWithBet(IsBet: Boolean; aRound: Byte; var aRoundScore: Integer);
+  begin
+    if (SpnEdtBet.Value>0) and IsBet then
+      if FieldFromQuestion(SpnEdtBet.Value+(aRound-1)*aQInRound).AsBoolean then
+        Inc(aRoundScore)
+      else
+        Dec(aRoundScore);
+  end;
+
 begin
-  if Q11InRound then
-    aQInRound:=11
-  else
-    aQInRound:=10;
-  ZQryScoreTableRound1.AsInteger:=ZQryScoreTableq1.AsInteger+ZQryScoreTableq2.AsInteger+ZQryScoreTableq3.AsInteger+
-  ZQryScoreTableq4.AsInteger+ZQryScoreTableq5.AsInteger+ZQryScoreTableq6.AsInteger+ZQryScoreTableq7.AsInteger+
-  ZQryScoreTableq8.AsInteger+ZQryScoreTableq9.AsInteger+ZQryScoreTableq10.AsInteger+ZQryScoreTableq11.AsInteger;
-  ZQryScoreTableRound1Club.AsInteger:=aQInRound-ZQryScoreTableRound1.AsInteger;
-  ZQryScoreTableRound2.AsInteger:=ZQryScoreTableq12.AsInteger+ZQryScoreTableq13.AsInteger+ZQryScoreTableq14.AsInteger+
-  ZQryScoreTableq15.AsInteger+ZQryScoreTableq16.AsInteger+ZQryScoreTableq17.AsInteger+ZQryScoreTableq18.AsInteger+
-  ZQryScoreTableq19.AsInteger+ZQryScoreTableq20.AsInteger+ZQryScoreTableq21.AsInteger+ZQryScoreTableq22.AsInteger;
-  ZQryScoreTableRound2Club.AsInteger:=aQInRound-ZQryScoreTableRound2.AsInteger;
-  ZQryScoreTableRound3.AsInteger:=ZQryScoreTableq23.AsInteger+ZQryScoreTableq24.AsInteger+ZQryScoreTableq25.AsInteger+
-  ZQryScoreTableq26.AsInteger+ZQryScoreTableq27.AsInteger+ZQryScoreTableq28.AsInteger+ZQryScoreTableq29.AsInteger+
-  ZQryScoreTableq30.AsInteger+ZQryScoreTableq31.AsInteger+ZQryScoreTableq32.AsInteger+ZQryScoreTableq33.AsInteger;
+  aQInRound:=QuestionsInRound;
+  aScore:=ZQryScoreTableq1.AsInteger+ZQryScoreTableq2.AsInteger+ZQryScoreTableq3.AsInteger+
+    ZQryScoreTableq4.AsInteger+ZQryScoreTableq5.AsInteger+ZQryScoreTableq6.AsInteger+ZQryScoreTableq7.AsInteger+
+    ZQryScoreTableq8.AsInteger+ZQryScoreTableq9.AsInteger+ZQryScoreTableq10.AsInteger+ZQryScoreTableq11.AsInteger;
+  CorrectWithBet(ZQryScoreTablebet1round.AsBoolean, 1, aScore);
+  ZQryScoreTableRound1.AsInteger:=aScore;
+  ZQryScoreTableRound1Club.AsInteger:=aQInRound-aScore;
+  aScore:=ZQryScoreTableq12.AsInteger+ZQryScoreTableq13.AsInteger+ZQryScoreTableq14.AsInteger+
+    ZQryScoreTableq15.AsInteger+ZQryScoreTableq16.AsInteger+ZQryScoreTableq17.AsInteger+ZQryScoreTableq18.AsInteger+
+    ZQryScoreTableq19.AsInteger+ZQryScoreTableq20.AsInteger+ZQryScoreTableq21.AsInteger+ZQryScoreTableq22.AsInteger;
+  CorrectWithBet(ZQryScoreTablebet2round.AsBoolean, 2, aScore);
+  ZQryScoreTableRound2.AsInteger:=aScore;
+  ZQryScoreTableRound2Club.AsInteger:=aQInRound-aScore;
+  aScore:=ZQryScoreTableq23.AsInteger+ZQryScoreTableq24.AsInteger+ZQryScoreTableq25.AsInteger+
+    ZQryScoreTableq26.AsInteger+ZQryScoreTableq27.AsInteger+ZQryScoreTableq28.AsInteger+ZQryScoreTableq29.AsInteger+
+    ZQryScoreTableq30.AsInteger+ZQryScoreTableq31.AsInteger+ZQryScoreTableq32.AsInteger+ZQryScoreTableq33.AsInteger;
+  CorrectWithBet(ZQryScoreTablebet3round.AsBoolean, 3, aScore);
+  ZQryScoreTableRound3.AsInteger:=aScore;
   ZQryScoreTableRound3Club.AsInteger:=aQInRound-ZQryScoreTableRound3.AsInteger;
-  ZQryScoreTableResult.AsInteger:=ZQryScoreTableRound1.AsInteger+ZQryScoreTableRound2.AsInteger+ZQryScoreTableRound3.AsInteger;
+  ZQryScoreTableResult.AsInteger:=ZQryScoreTableRound1.AsInteger+
+    ZQryScoreTableRound2.AsInteger+ZQryScoreTableRound3.AsInteger;
 end;
 
 procedure TFrameTournament.ZQryTournamentsAfterScroll(DataSet: TDataSet);
@@ -195,6 +239,11 @@ begin
   Result:=RdGrpQuestionCount.ItemIndex=1
 end;
 
+function TFrameTournament.GetQuestionWithBet: Integer;
+begin
+  Result:=SpnEdtBet.Value;
+end;
+
 procedure TFrameTournament.SetQ11InRound(AValue: Boolean);
 begin
   if AValue then
@@ -205,6 +254,11 @@ begin
   ZQryScoreTableq22.Visible:=AValue;
   ZQryScoreTableq33.Visible:=AValue;
   UpdateColumns;
+end;
+
+procedure TFrameTournament.SetQuestionWithBet(AValue: Integer);
+begin
+  SpnEdtBet.Value:=AValue;
 end;
 
 procedure TFrameTournament.SetToolBarVisible(AValue: Boolean);
@@ -241,6 +295,26 @@ begin
   UpdateGridCols(RxDBGrdScoreTable1, Q11InRound);
   UpdateGridCols(RxDBGrdScoreTable2, Q11InRound);
   UpdateGridCols(RxDBGrdScoreTable3, Q11InRound);
+end;
+
+function TFrameTournament.FieldFromQuestion(aQuestionNum: Integer): TBooleanField;
+begin
+  if not Q11InRound then
+  begin
+    if aQuestionNum>20 then
+      Inc(aQuestionNum);
+    if aQuestionNum>10 then
+      Inc(aQuestionNum);
+  end;
+  Result:=ZQryScoreTable.FieldByName('q'+aQuestionNum.ToString) as TBooleanField;
+end;
+
+function TFrameTournament.QuestionsInRound: Integer;
+begin
+  if Q11InRound then
+    Exit(11)
+  else
+    Exit(10);
 end;
 
 procedure TFrameTournament.InitDB;

@@ -21,6 +21,23 @@ msgctxt "tframetournament.dbgrdtournaments.columns[2].title.caption"
 msgid "title"
 msgstr ""
 
+#: tframetournament.grpbxbet.caption
+msgctxt "tframetournament.grpbxbet.caption"
+msgid "Ставка"
+msgstr ""
+
+#: tframetournament.grpbxrules.caption
+msgid "Правила (не менять во время игры)"
+msgstr ""
+
+#: tframetournament.label1.caption
+msgid "Номер вопроса в раунде"
+msgstr ""
+
+#: tframetournament.label2.caption
+msgid "(0 - ставки выключены)"
+msgstr ""
+
 #: tframetournament.rdgrpquestioncount.caption
 msgid "В раунде"
 msgstr ""
@@ -62,22 +79,22 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[16].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[16].title.caption"
-msgid "Раунд 1|Итог"
+msgid "Ставка"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[17].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[17].title.caption"
-msgid "Раунд 2|12"
+msgid "Раунд 1|Итог"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[18].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[18].title.caption"
-msgid "Раунд 2|13"
+msgid "Раунд 2|12"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[19].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[19].title.caption"
-msgid "Раунд 2|14"
+msgid "Раунд 2|13"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[1].title.caption
@@ -87,52 +104,52 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[20].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[20].title.caption"
-msgid "Раунд 2|15"
+msgid "Раунд 2|14"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[21].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[21].title.caption"
-msgid "Раунд 2|16"
+msgid "Раунд 2|15"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[22].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[22].title.caption"
-msgid "Раунд 2|17"
+msgid "Раунд 2|16"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[23].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[23].title.caption"
-msgid "Раунд 2|18"
+msgid "Раунд 2|17"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[24].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[24].title.caption"
-msgid "Раунд 2|19"
+msgid "Раунд 2|18"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[25].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[25].title.caption"
-msgid "Раунд 2|20"
+msgid "Раунд 2|19"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[26].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[26].title.caption"
-msgid "Раунд 2|21"
+msgid "Раунд 2|20"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[27].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[27].title.caption"
-msgid "Раунд 2|22"
+msgid "Раунд 2|21"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[28].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[28].title.caption"
-msgid "Раунд 2|Итог"
+msgid "Раунд 2|22"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[29].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[29].title.caption"
-msgid "Раунд 3|23"
+msgid "Ставка"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[2].title.caption
@@ -142,52 +159,52 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[30].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[30].title.caption"
-msgid "Раунд 3|24"
+msgid "Раунд 2|Итог"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[31].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[31].title.caption"
-msgid "Раунд 3|25"
+msgid "Раунд 3|23"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[32].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[32].title.caption"
-msgid "Раунд 3|26"
+msgid "Раунд 3|24"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[33].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[33].title.caption"
-msgid "Раунд 3|27"
+msgid "Раунд 3|25"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[34].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[34].title.caption"
-msgid "Раунд 3|28"
+msgid "Раунд 3|26"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[35].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[35].title.caption"
-msgid "Раунд 3|29"
+msgid "Раунд 3|27"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[36].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[36].title.caption"
-msgid "Раунд 3|30"
+msgid "Раунд 3|28"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[37].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[37].title.caption"
-msgid "Раунд 3|31"
+msgid "Раунд 3|29"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[38].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[38].title.caption"
-msgid "Раунд 3|32"
+msgid "Раунд 3|30"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[39].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[39].title.caption"
-msgid "Раунд 3|33"
+msgid "Раунд 3|31"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[3].title.caption
@@ -197,6 +214,21 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[40].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[40].title.caption"
+msgid "Раунд 3|32"
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable.columns[41].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable.columns[41].title.caption"
+msgid "Раунд 3|33"
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable.columns[42].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable.columns[42].title.caption"
+msgid "Ставка"
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable.columns[43].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable.columns[43].title.caption"
 msgid "Раунд 3|Итог"
 msgstr ""
 
@@ -267,11 +299,16 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable1.columns[16].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable1.columns[16].title.caption"
-msgid "Счет|Зн."
+msgid "Ставка"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable1.columns[17].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable1.columns[17].title.caption"
+msgid "Счет|Зн."
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable1.columns[18].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable1.columns[18].title.caption"
 msgid "Счет|Кл."
 msgstr ""
 
@@ -357,11 +394,16 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable2.columns[16].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable2.columns[16].title.caption"
-msgid "Счет|Зн."
+msgid "Ставка"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable2.columns[17].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable2.columns[17].title.caption"
+msgid "Счет|Зн."
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable2.columns[18].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable2.columns[18].title.caption"
 msgid "Счет|Кл."
 msgstr ""
 
@@ -447,11 +489,16 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable3.columns[16].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable3.columns[16].title.caption"
-msgid "Счет|Зн."
+msgid "Ставка"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable3.columns[17].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable3.columns[17].title.caption"
+msgid "Счет|Зн."
+msgstr ""
+
+#: tframetournament.rxdbgrdscoretable3.columns[18].title.caption
+msgctxt "tframetournament.rxdbgrdscoretable3.columns[18].title.caption"
 msgid "Счет|Кл."
 msgstr ""
 
