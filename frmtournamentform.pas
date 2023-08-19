@@ -118,6 +118,7 @@ type
     procedure ZQryScoreTableCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryTournamentsAfterScroll({%H-}DataSet: TDataSet);
   private
+    procedure DoQuestionWithBetChanged(aQuestionWithBet: Integer);
     function GetQ11InRound: Boolean;
     function GetQuestionWithBet: Integer;
     procedure SetQ11InRound(AValue: Boolean);
@@ -181,14 +182,8 @@ begin
 end;
 
 procedure TFrameTournament.SpnEdtBetChange(Sender: TObject);
-var
-  aCanBets: Boolean;
 begin
-  ZQryScoreTable.Refresh;
-  aCanBets:=TSpinEdit(Sender).Value>0;
-  ZQryScoreTablebet1round.Visible:=aCanBets;
-  ZQryScoreTablebet2round.Visible:=aCanBets;
-  ZQryScoreTablebet3round.Visible:=aCanBets;
+  DoQuestionWithBetChanged(TSpinEdit(Sender).Value);
 end;
 
 procedure TFrameTournament.ZQryScoreTableCalcFields(DataSet: TDataSet);
@@ -236,6 +231,17 @@ begin
   Caption:=s_IntelGames+'. ['+ZQryTournamentstitle.AsString+']';
 end;
 
+procedure TFrameTournament.DoQuestionWithBetChanged(aQuestionWithBet: Integer);
+var
+  aCanBets: Boolean;
+begin
+  ZQryScoreTable.Refresh;
+  aCanBets:=aQuestionWithBet>0;
+  ZQryScoreTablebet1round.Visible:=aCanBets;
+  ZQryScoreTablebet2round.Visible:=aCanBets;
+  ZQryScoreTablebet3round.Visible:=aCanBets;
+end;
+
 function TFrameTournament.GetQ11InRound: Boolean;
 begin
   Result:=RdGrpQuestionCount.ItemIndex=1
@@ -261,6 +267,7 @@ end;
 procedure TFrameTournament.SetQuestionWithBet(AValue: Integer);
 begin
   SpnEdtBet.Value:=AValue;
+  DoQuestionWithBetChanged(AValue);
 end;
 
 procedure TFrameTournament.SetToolBarVisible(AValue: Boolean);
