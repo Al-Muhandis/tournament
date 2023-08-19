@@ -332,7 +332,7 @@ end;
 
 function TFrameTournament.RoundFromQuestion(aQuestion: Integer): Integer;
 begin
-  Result:=(aQuestion div QuestionsInRound) + 1
+  Result:=((aQuestion-1) div QuestionsInRound) + 1
 end;
 
 procedure TFrameTournament.InitDB;
