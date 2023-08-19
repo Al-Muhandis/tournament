@@ -11,7 +11,7 @@ uses
 
 type
 
-
+  TBetOptionChanged = procedure (aQuestionNum: Integer) of object;
 
   { TFrameTournament }
 
@@ -118,6 +118,7 @@ type
     procedure ZQryScoreTableCalcFields({%H-}DataSet: TDataSet);
     procedure ZQryTournamentsAfterScroll({%H-}DataSet: TDataSet);
   private
+    FOnBetOptionChanged: TBetOptionChanged;
     procedure DoQuestionWithBetChanged(aQuestionWithBet: Integer);
     function GetQ11InRound: Boolean;
     function GetQuestionWithBet: Integer;
@@ -135,6 +136,7 @@ type
     property ToolBarVisible: Boolean write SetToolBarVisible;
     property Q11InRound: Boolean read GetQ11InRound write SetQ11InRound;
     property QuestionWithBet: Integer read GetQuestionWithBet write SetQuestionWithBet;
+    property OnBetOptionChanged: TBetOptionChanged read FOnBetOptionChanged write FOnBetOptionChanged;
   end;
 
 implementation
@@ -240,6 +242,8 @@ begin
   ZQryScoreTablebet1round.Visible:=aCanBets;
   ZQryScoreTablebet2round.Visible:=aCanBets;
   ZQryScoreTablebet3round.Visible:=aCanBets;
+  if Assigned(FOnBetOptionChanged) then
+    FOnBetOptionChanged(aQuestionWithBet);
 end;
 
 function TFrameTournament.GetQ11InRound: Boolean;
