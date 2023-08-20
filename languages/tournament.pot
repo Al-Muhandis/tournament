@@ -84,7 +84,7 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[17].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[17].title.caption"
-msgid "Раунд 1|Итог"
+msgid "Итог"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[18].title.caption
@@ -159,7 +159,7 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[30].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[30].title.caption"
-msgid "Раунд 2|Итог"
+msgid "Итог"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[31].title.caption
@@ -229,7 +229,7 @@ msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[43].title.caption
 msgctxt "tframetournament.rxdbgrdscoretable.columns[43].title.caption"
-msgid "Раунд 3|Итог"
+msgid "Итог"
 msgstr ""
 
 #: tframetournament.rxdbgrdscoretable.columns[4].title.caption
@@ -734,7 +734,7 @@ msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[16].title.caption
 msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[16].title.caption"
-msgid "Ставка"
+msgid "Раунд 1|Ставка"
 msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[17].title.caption
@@ -814,7 +814,7 @@ msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[30].title.caption
 msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[30].title.caption"
-msgid "Раунд 2|Итог"
+msgid "Итог"
 msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[31].title.caption
@@ -879,7 +879,7 @@ msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[42].title.caption
 msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[42].title.caption"
-msgid "Ставка"
+msgid "Раунд 1|Ставка"
 msgstr ""
 
 #: tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtallrounds.rxdbgrdscoretable.columns[43].title.caption

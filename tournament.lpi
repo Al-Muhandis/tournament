@@ -22,6 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <RevisionNr Value="4"/>
+      <BuildNr Value="4"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -86,6 +87,7 @@
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
