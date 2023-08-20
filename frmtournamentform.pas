@@ -17,7 +17,7 @@ type
 
   TFrameTournament = class(TFrame)
     DBGrdTournaments: TRxDBGrid;
-    DBNavigator1: TDBNavigator;
+    DBNvgtr: TDBNavigator;
     DBNavigator2: TDBNavigator;
     DBNvgtrTournaments: TDBNavigator;
     DtSrcScoreTable: TDataSource;
@@ -25,8 +25,8 @@ type
     DtSrcTournaments: TDataSource;
     GrpBxRules: TGroupBox;
     GrpBxBet: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
+    LblBetNumInRound: TLabel;
+    LblBet0IsOff: TLabel;
     miFullScreen: TMenuItem;
     miScreen1: TMenuItem;
     miScreen2: TMenuItem;
@@ -37,13 +37,13 @@ type
     RxDBGrdScoreTable1: TRxDBGrid;
     RxDBGrdScoreTable2: TRxDBGrid;
     RxDBGrdScoreTable3: TRxDBGrid;
-    RxDBGrdScoreTable4: TRxDBGrid;
-    RxDBGridExportSpreadSheet1: TRxDBGridExportSpreadSheet;
+    RxDBGrdScoreTableTotal: TRxDBGrid;
+    RxDBGrdExprtSprdSht: TRxDBGridExportSpreadSheet;
     RxDBGridTeams: TRxDBGrid;
     RxLookupEdit1: TRxLookupEdit;
     RxSrtZs: TRxSortZeos;
     SpnEdtBet: TSpinEdit;
-    StringField1: TStringField;
+    ZQryScoreTableteamname: TStringField;
     TbShtOptions: TTabSheet;
     TbShtAllRounds: TTabSheet;
     TbShtResult: TTabSheet;

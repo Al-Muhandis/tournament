@@ -6,8 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, RxDBGrid,
-  RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList, IniPropStorage, frmtournamentform
-  , PropertyStorage;
+  RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList, IniPropStorage, frmtournamentform,
+  PropertyStorage
+  ;
 
 type
 
@@ -20,7 +21,6 @@ type
     ActnLst: TActionList;
     FrmTrnmnt: TFrameTournament;
     IniPrpStrg: TIniPropStorage;
-    MenuItem1: TMenuItem;
     miFullScreen: TMenuItem;
     miScreen1: TMenuItem;
     miScreen2: TMenuItem;
