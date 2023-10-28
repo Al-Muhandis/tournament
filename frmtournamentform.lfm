@@ -58,23 +58,21 @@ object FrameTournament: TFrameTournament
           Top = 2
           Style = tbsSeparator
         end
-        object RxLookupEdit1: TRxLookupEdit
+        object DBLkpCmbBx: TDBLookupComboBox
           Left = 216
           Height = 28
           Top = 2
-          Width = 296
-          ButtonWidth = 19
-          DirectInput = False
-          MaxLength = 0
-          NumGlyphs = 1
-          PasswordChar = #0
+          Width = 408
+          DropDownCount = 16
+          KeyField = 'id'
+          ListField = 'title'
+          ListFieldIndex = 0
+          ListSource = DtSrcTournaments
+          LookupCache = False
+          OnChange = DBLkpCmbBxChange
+          ReadOnly = True
+          Style = csDropDownList
           TabOrder = 1
-          Text = 'Первая серия игр 1442 гх.'
-          LookupDisplay = 'title'
-          LookupField = 'title'
-          LookupSource = DtSrcTournaments
-          PopUpFormOptions.Columns = <>
-          PopUpFormOptions.TitleStyle = tsNative
         end
       end
       object PgCntrlRounds: TPageControl
@@ -2801,6 +2799,7 @@ object FrameTournament: TFrameTournament
             Title.Alignment = taCenter
             Title.Orientation = toHorizontal
             Title.Caption = 'id'
+            Width = 421
             FieldName = 'id'
             EditButtons = <>
             Filter.DropDownRows = 0
@@ -2815,6 +2814,7 @@ object FrameTournament: TFrameTournament
             Title.Alignment = taCenter
             Title.Orientation = toHorizontal
             Title.Caption = 'date'
+            Width = 421
             FieldName = 'date'
             EditButtons = <>
             Filter.DropDownRows = 0
@@ -2829,6 +2829,7 @@ object FrameTournament: TFrameTournament
             Title.Alignment = taCenter
             Title.Orientation = toHorizontal
             Title.Caption = 'title'
+            Width = 422
             FieldName = 'title'
             EditButtons = <>
             Filter.DropDownRows = 0
@@ -2901,6 +2902,7 @@ object FrameTournament: TFrameTournament
         SelectedFont.Color = clMenuText
         OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
         Align = alClient
+        AutoFillColumns = True
         Color = clWindow
         DrawFullLine = False
         FocusColor = clRed
@@ -3602,7 +3604,6 @@ object FrameTournament: TFrameTournament
   end
   object ZQryTournaments: TZQuery
     Connection = ZCnctn
-    AfterScroll = ZQryTournamentsAfterScroll
     SQL.Strings = (
       'select * from tournaments'
     )

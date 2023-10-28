@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, ComCtrls, Menus, RxDBGridExportSpreadSheet, RxSortZeos, ZDataset, ZConnection,
-  RxDBGrid, DBCtrls, ExtCtrls, StdCtrls, Spin, rxlookup
+  RxDBGrid, DBCtrls, ExtCtrls, StdCtrls, Spin
   ;
 
 type
@@ -17,6 +17,7 @@ type
 
   TFrameTournament = class(TFrame)
     DBGrdTournaments: TRxDBGrid;
+    DBLkpCmbBx: TDBLookupComboBox;
     DBNvgtr: TDBNavigator;
     DBNavigator2: TDBNavigator;
     DBNvgtrTournaments: TDBNavigator;
@@ -40,7 +41,6 @@ type
     RxDBGrdScoreTableTotal: TRxDBGrid;
     RxDBGrdExprtSprdSht: TRxDBGridExportSpreadSheet;
     RxDBGridTeams: TRxDBGrid;
-    RxLookupEdit1: TRxLookupEdit;
     RxSrtZs: TRxSortZeos;
     SpnEdtBet: TSpinEdit;
     ZQryScoreTableteamname: TStringField;
@@ -115,11 +115,11 @@ type
     ZQryTournamentsdate: TDateField;
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;
+    procedure DBLkpCmbBxChange(Sender: TObject);
     procedure RdGrpQuestionCountClick(Sender: TObject);
     procedure SpnEdtBetChange(Sender: TObject);
     procedure ZQryScoreTableAfterInsert({%H-}DataSet: TDataSet);
     procedure ZQryScoreTableCalcFields({%H-}DataSet: TDataSet);
-    procedure ZQryTournamentsAfterScroll({%H-}DataSet: TDataSet);
   private
     FOnBetOptionChanged: TBetOptionChanged;
     procedure DoQuestionWithBetChanged(aQuestionWithBet: Integer);
@@ -129,6 +129,7 @@ type
     procedure SetQuestionWithBet(AValue: Integer);
     procedure SetToolBarVisible(AValue: Boolean);
     procedure UpdateColumns;
+    procedure UpdateScore;
   public
     procedure InitDB;
     procedure ApplyDB;                                               
@@ -191,6 +192,11 @@ begin
   QInRound:=TRadioGroup(Sender).ItemIndex+10;
 end;
 
+procedure TFrameTournament.DBLkpCmbBxChange(Sender: TObject);
+begin
+  UpdateScore;
+end;
+
 procedure TFrameTournament.SpnEdtBetChange(Sender: TObject);
 begin
   DoQuestionWithBetChanged(TSpinEdit(Sender).Value);
@@ -235,13 +241,6 @@ begin
   ZQryScoreTableRound3Club.AsInteger:=aQInRound-ZQryScoreTableRound3.AsInteger;
   ZQryScoreTableResult.AsInteger:=ZQryScoreTableRound1.AsInteger+
     ZQryScoreTableRound2.AsInteger+ZQryScoreTableRound3.AsInteger;
-end;
-
-procedure TFrameTournament.ZQryTournamentsAfterScroll(DataSet: TDataSet);
-begin
-  ZQryScoreTable.SQL.Text:='select * from scores where tournament = '+ZQryTournamentsid.AsInteger.ToString;
-  ZQryScoreTable.Open;
-  Caption:=s_IntelGames+'. ['+ZQryTournamentstitle.AsString+']';
 end;
 
 procedure TFrameTournament.DoQuestionWithBetChanged(aQuestionWithBet: Integer);
@@ -330,6 +329,19 @@ begin
   UpdateGridCols(RxDBGrdScoreTable3, QInRound);
 end;
 
+procedure TFrameTournament.UpdateScore;
+var
+  aTour: Integer;
+begin
+  if DBLkpCmbBx.KeyValue=Null then
+    aTour:=-1
+  else
+    aTour:=DBLkpCmbBx.KeyValue;                       
+  Caption:=s_IntelGames+'. ['+DBLkpCmbBx.KeyField+']';
+  ZQryScoreTable.SQL.Text:='select * from scores where tournament = '+aTour.ToString;
+  ZQryScoreTable.Open;
+end;
+
 function TFrameTournament.FieldFromQuestion(aQuestionNum: Integer): TBooleanField;
 var
   aDiv, aMod: Integer;
@@ -373,8 +385,7 @@ begin
   ZCnctn.ExecuteDirect(_SQLEval3);
   ZQryTournaments.Open;
   ZQryTeams.Open;
-  ZQryScoreTable.SQL.Text:='select * from scores where tournament = '+ZQryTournamentsid.AsInteger.ToString;
-  ZQryScoreTable.Open;
+  UpdateScore;
 end;
 
 procedure TFrameTournament.ApplyDB;
