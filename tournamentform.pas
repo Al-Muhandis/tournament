@@ -81,18 +81,18 @@ end;
 procedure TFrm.FormCreate(Sender: TObject);
 begin
   FrmTrnmnt.InitDB;   
-  FrmTrnmnt.Q11InRound:=True;
+  FrmTrnmnt.QInRound:=10;
 end;
 
 procedure TFrm.IniPrpStrgRestoringProperties(Sender: TObject);
 begin
-  FrmTrnmnt.Q11InRound:=     TIniPropStorage(Sender).ReadBoolean('Q11InRound', True);
+  FrmTrnmnt.QInRound:=     TIniPropStorage(Sender).ReadInteger('QInRound', 11);
   FrmTrnmnt.QuestionWithBet:=TIniPropStorage(Sender).ReadInteger('QWithBet', 0);
 end;
 
 procedure TFrm.IniPrpStrgSavingProperties(Sender: TObject);
 begin
-  TIniPropStorage(Sender).WriteBoolean('Q11InRound', FrmTrnmnt.Q11InRound);
+  TIniPropStorage(Sender).WriteInteger('QInRound', FrmTrnmnt.QInRound);
   TIniPropStorage(Sender).WriteInteger('QWithBet',   FrmTrnmnt.QuestionWithBet);
 end;
 
