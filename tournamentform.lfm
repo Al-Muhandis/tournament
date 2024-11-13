@@ -2289,9 +2289,6 @@ object Frm: TFrm
         ClientWidth = 1314
       end
     end
-    inherited ZCnctn: TZConnection
-      Protocol = 'sqlite'
-    end
   end
   object TryIcn: TTrayIcon
     PopUpMenu = PppMnTray

@@ -22,7 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="2"/>
+      <BuildNr Value="7"/>
       <Language Value="0419"/>
     </VersionInfo>
     <BuildModes>
@@ -177,25 +177,10 @@
     </RunParams>
     <RequiredPackages>
       <Item>
-        <PackageName Value="rxtools"/>
-      </Item>
-      <Item>
-        <PackageName Value="rxdbgrid_export_spreadsheet"/>
-      </Item>
-      <Item>
-        <PackageName Value="rx_sort_zeos"/>
-      </Item>
-      <Item>
-        <PackageName Value="dOpfRT"/>
+        <PackageName Value="TournamentFramePkg"/>
       </Item>
       <Item>
         <PackageName Value="FCL"/>
-      </Item>
-      <Item>
-        <PackageName Value="zcomponent"/>
-      </Item>
-      <Item>
-        <PackageName Value="rxnew"/>
       </Item>
       <Item>
         <PackageName Value="LCL"/>
@@ -212,13 +197,6 @@
         <ComponentName Value="Frm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-      </Unit>
-      <Unit>
-        <Filename Value="frmtournamentform.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FrameTournament"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
       </Unit>
     </Units>
   </ProjectOptions>

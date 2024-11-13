@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <PathDelim Value="\"/>
+    <Name Value="TournamentFramePkg"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="Tournament scoreboard frame for games a-la &quot;Что?Где?Когда?&quot;"/>
+    <Version Release="1"/>
+    <Files>
+      <Item>
+        <Filename Value="frmtournamentform.pas"/>
+        <UnitName Value="frmtournamentform"/>
+      </Item>
+    </Files>
+    <i18n>
+      <EnableI18N Value="True"/>
+    </i18n>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="dOpfRT"/>
+      </Item>
+      <Item>
+        <PackageName Value="rx_sort_zeos"/>
+      </Item>
+      <Item>
+        <PackageName Value="rxdbgrid_export_spreadsheet"/>
+      </Item>
+      <Item>
+        <PackageName Value="rxtools"/>
+      </Item>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
