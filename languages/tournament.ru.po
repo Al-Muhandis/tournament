@@ -1518,6 +1518,24 @@ msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtroun
 msgid "Round 3|29"
 msgstr "Раунд 3|27"
 
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption
+#, fuzzy
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption"
+msgid "id"
+msgstr "id"
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption
+#, fuzzy
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption"
+msgid "date"
+msgstr "Дата"
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption
+#, fuzzy
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption"
+msgid "title"
+msgstr "Наименование"
+
 #: tfrm.mifullscreen.caption
 msgid "Full screen"
 msgstr "Весь экран"

@@ -1296,6 +1296,21 @@ msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshtscoretableallrounds.pgcntrlrounds.tbshtroun
 msgid "Round 3|29"
 msgstr ""
 
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[0].title.caption"
+msgid "id"
+msgstr ""
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[1].title.caption"
+msgid "date"
+msgstr ""
+
+#: tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption
+msgctxt "tfrm.frmtrnmnt.pgcntrl.tbshttournament.dbgrdtournaments.columns[2].title.caption"
+msgid "title"
+msgstr ""
+
 #: tfrm.mifullscreen.caption
 msgid "Full screen"
 msgstr ""

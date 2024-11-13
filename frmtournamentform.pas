@@ -115,7 +115,7 @@ type
     ZQryTournamentsdate: TDateField;
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;
-    procedure DBLkpCmbBxChange(Sender: TObject);
+    procedure DBLkpCmbBxChange({%H-}Sender: TObject);
     procedure RdGrpQuestionCountClick(Sender: TObject);
     procedure SpnEdtBetChange(Sender: TObject);
     procedure ZQryScoreTableAfterInsert({%H-}DataSet: TDataSet);
