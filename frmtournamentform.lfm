@@ -69,7 +69,7 @@ object FrameTournament: TFrameTournament
           ListFieldIndex = 0
           ListSource = DtSrcTournaments
           LookupCache = False
-          OnChange = DBLkpCmbBxChange
+          OnSelect = DBLkpCmbBxSelect
           ReadOnly = True
           Style = csDropDownList
           TabOrder = 1
@@ -1981,7 +1981,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toVertical90
                 Title.Caption = 'Result'
-                Width = 93
+                Width = 73
                 FieldName = 'Result'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -1996,7 +1996,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|25'
-                Width = 93
+                Width = 73
                 FieldName = 'q25'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2011,7 +2011,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|26'
-                Width = 93
+                Width = 73
                 FieldName = 'q26'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2026,7 +2026,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|27'
-                Width = 93
+                Width = 73
                 FieldName = 'q27'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2041,7 +2041,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|28'
-                Width = 93
+                Width = 73
                 FieldName = 'q28'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2056,7 +2056,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|29'
-                Width = 93
+                Width = 73
                 FieldName = 'q29'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2071,7 +2071,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|30'
-                Width = 93
+                Width = 73
                 FieldName = 'q30'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2083,11 +2083,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|31'
-                Width = 40
+                Width = 73
                 FieldName = 'q31'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2099,11 +2098,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|32'
-                Width = 40
+                Width = 73
                 FieldName = 'q32'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2115,11 +2113,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|33'
-                Width = 40
+                Width = 73
                 FieldName = 'q33'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2131,11 +2128,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|34'
-                Width = 40
+                Width = 73
                 FieldName = 'q34'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2147,11 +2143,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|35'
-                Width = 40
+                Width = 73
                 FieldName = 'q35'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2163,11 +2158,10 @@ object FrameTournament: TFrameTournament
                 Footers = <>
               end            
               item
-                MaxSize = 40
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Round 3|36'
-                Width = 40
+                Width = 73
                 FieldName = 'q36'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2182,7 +2176,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toVertical90
                 Title.Caption = 'Bet'
-                Width = 93
+                Width = 73
                 FieldName = 'bet3round'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2201,7 +2195,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Score|Pl.'
-                Width = 92
+                Width = 73
                 FieldName = 'Round3'
                 EditButtons = <>
                 Filter.DropDownRows = 0
@@ -2220,7 +2214,7 @@ object FrameTournament: TFrameTournament
                 Title.Alignment = taCenter
                 Title.Orientation = toHorizontal
                 Title.Caption = 'Score|Cl.'
-                Width = 92
+                Width = 73
                 FieldName = 'Round3Club'
                 EditButtons = <>
                 Filter.DropDownRows = 0

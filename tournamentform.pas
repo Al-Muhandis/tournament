@@ -5,9 +5,8 @@ unit tournamentform;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, RxDBGrid,
-  RxDBGridExportSpreadSheet, DBGrids, ComCtrls, DBCtrls, ExtCtrls, Menus, ActnList, IniPropStorage, frmtournamentform,
-  PropertyStorage
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ExtCtrls, Menus, ActnList, IniPropStorage,
+  frmtournamentform
   ;
 
 type

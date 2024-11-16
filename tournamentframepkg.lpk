@@ -9,6 +9,11 @@
       <SearchPaths>
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
+      <Other>
+        <CompilerMessages>
+          <IgnoredMessages idx6058="True"/>
+        </CompilerMessages>
+      </Other>
     </CompilerOptions>
     <Description Value="Tournament scoreboard frame for games a-la &quot;Что?Где?Когда?&quot;"/>
     <Version Release="1"/>
@@ -20,11 +25,9 @@
     </Files>
     <i18n>
       <EnableI18N Value="True"/>
+      <OutDir Value="languages"/>
     </i18n>
     <RequiredPkgs>
-      <Item>
-        <PackageName Value="dOpfRT"/>
-      </Item>
       <Item>
         <PackageName Value="rx_sort_zeos"/>
       </Item>

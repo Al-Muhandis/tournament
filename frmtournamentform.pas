@@ -115,7 +115,7 @@ type
     ZQryTournamentsdate: TDateField;
     ZQryTournamentsid: TLargeintField;
     ZQryTournamentstitle: TStringField;
-    procedure DBLkpCmbBxChange({%H-}Sender: TObject);
+    procedure DBLkpCmbBxSelect({%H-}Sender: TObject);
     procedure RdGrpQuestionCountClick(Sender: TObject);
     procedure SpnEdtBetChange(Sender: TObject);
     procedure ZQryScoreTableAfterInsert({%H-}DataSet: TDataSet);
@@ -170,18 +170,18 @@ const
   'bet3round  BOOLEAN DEFAULT (0), '+
   'UNIQUE (tournament, team) ON CONFLICT IGNORE);';
 
-
-resourcestring
-  s_IntelGames='Intellectual games';
-
-
 { TFrameTournament }
 
 procedure TFrameTournament.ZQryScoreTableAfterInsert(DataSet: TDataSet);
 var
   aField: TField;
+  aTour: LongInt;
 begin
-  ZQryScoreTabletournament.AsInteger:=ZQryTournamentsid.AsInteger;
+  if DBLkpCmbBx.KeyValue<>Null then
+    aTour:=DBLkpCmbBx.KeyValue
+  else
+    aTour:=-1;
+  ZQryScoreTabletournament.AsInteger:=aTour;
   for aField in ZQryScoreTable.Fields do
     if aField is TBooleanField then
       TBooleanField(aField).AsBoolean:=False;
@@ -192,7 +192,7 @@ begin
   QInRound:=TRadioGroup(Sender).ItemIndex+10;
 end;
 
-procedure TFrameTournament.DBLkpCmbBxChange(Sender: TObject);
+procedure TFrameTournament.DBLkpCmbBxSelect(Sender: TObject);
 begin
   UpdateScore;
 end;
@@ -336,8 +336,7 @@ begin
   if DBLkpCmbBx.KeyValue=Null then
     aTour:=-1
   else
-    aTour:=DBLkpCmbBx.KeyValue;                       
-  Caption:=s_IntelGames+'. ['+DBLkpCmbBx.KeyField+']';
+    aTour:=DBLkpCmbBx.KeyValue;
   ZQryScoreTable.SQL.Text:='select * from scores where tournament = '+aTour.ToString;
   ZQryScoreTable.Open;
 end;
