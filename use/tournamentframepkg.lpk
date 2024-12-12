@@ -7,6 +7,7 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
+        <OtherUnitFiles Value="..\src"/>
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
       <Other>
@@ -19,8 +20,8 @@
     <Version Release="1"/>
     <Files>
       <Item>
-        <Filename Value="frmtournamentform.pas"/>
-        <UnitName Value="frmtournamentform"/>
+        <Filename Value="..\src\tournamentform.pas"/>
+        <UnitName Value="tournamentform"/>
       </Item>
     </Files>
     <i18n>
