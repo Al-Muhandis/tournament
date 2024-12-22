@@ -36,6 +36,7 @@
 backup/
 *.bak
 lib/
+x86_64-win64/
 
 # Application bundle for Mac OS
 *.app/
