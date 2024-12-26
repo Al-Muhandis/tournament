@@ -8,7 +8,7 @@ unit TournamentFramePkg;
 interface
 
 uses
-  frmtournamentform;
+  tournamentform;
 
 implementation
 
