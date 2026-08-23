@@ -236,7 +236,7 @@ begin
   try
     if ParamCount > 0 then
       case ParamStr(1) of
-        'build': BuildAll(["PlaysoundPackage", "Rx", "FPSpreadsheet", "ZeosDBO"]);
+        'build': BuildAll(['PlaysoundPackage', 'Rx', 'FPSpreadsheet', 'ZeosDBO']);
         else
           OutLog(etError, 'Unknown command: "' + ParamStr(1) + '". Usage: main.pas build');
       end
